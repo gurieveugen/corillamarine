@@ -11,14 +11,15 @@
 						<address>Victoria Street, Pontycymer, Bridgend, Mid Glamorgan CF32 8LR</address>
 					</div>
 					<div class="column">
-						<a href="mailto:info@corillaplastics.co.uk">info@corillaplastics.co.uk</a> <br>
+						<a href="mailto:info@corillamarine.com">info@corillamarine.com</a> <br>
 						01656 870415 <br>
-						<a href="#" class="link-in"><img src="<?php echo TDU; ?>/images/btn-in.png" alt=""></a>
+						<a href="http://www.linkedin.com/company/corilla-plastics-group-ltd" class="link-in"><img src="<?php echo TDU; ?>/images/btn-in.png" alt=""></a>
 					</div>
 					<div class="column logos-col">
 						<ul class="logos">
-							<li><a href="#"><img src="<?php echo TDU; ?>/images/logo-ukas.png" alt=""></a></li>
-							<li><a href="#"><img src="<?php echo TDU; ?>/images/logo-bpf.png" alt=""></a></li>
+							<li><img src="<?php echo TDU; ?>/images/logo-ukas.png" alt=""></li>
+							<li><img src="<?php echo TDU; ?>/images/logo-bpf.png" alt=""></li>
+                            <li><img src="<?php echo TDU; ?>/images/bpf_rm_logo.png" alt=""></li>
 						</ul>
 					</div>
 				</div>
@@ -26,9 +27,9 @@
 			<div class="bottom">
 				<div class="center-wrap-790 cf">
 					<ul class="right cf">
-						<li><a href="#">Terms &amp; Conditions</a></li>
-						<li><a href="#">Privacy Policy</a></li>
-						<li><a href="#">Cookies</a></li>
+						<li><a href="/terms/">Terms &amp; Conditions</a></li>
+						<li><a href="/privacy/">Privacy Policy</a></li>
+						<li><a href="/cookies/">Cookies</a></li>
 					</ul>
 					<p class="pc-visible">Corilla Plastics Ltd</p>
 				</div>

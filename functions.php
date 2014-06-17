@@ -7,6 +7,7 @@
 define('TDU', get_bloginfo('template_url'));
 
 require_once (dirname (__FILE__) . '/__widgets.php');
+require_once 'includes/post_type_factory.php';
 
 
 add_theme_support( 'automatic-feed-links' );
@@ -139,7 +140,24 @@ function scripts_method() {
 	wp_deregister_script( 'jquery' );
 	wp_register_script( 'jquery', TDU.'/js/jquery-1.9.1.min.js');
 	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script('google-map', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false');
+	$items      = $GLOBALS['gmap']->getItems();
+	$gmap_items = array();
+	if($items)
+	{
+		foreach ($items as $post) 
+		{
+			$gmap_items[$post->ID] = array(
+				'id'      => $post->ID, 
+				'content' => $post->post_content, 
+				'lat'     => $post->meta['gmap_latitude'], 
+				'lng'     => $post->meta['gmap_longitude']);
+		}
+	}
+	wp_localize_script('google-map', 'gmap_items', $gmap_items);
+	wp_localize_script('google-map', 'gmap_settings', array('pin' => TDU.'/images/pin.png'));
 }
+
 add_action('wp_enqueue_scripts', 'scripts_method');
 
 // register tag [template-url]
@@ -165,7 +183,7 @@ function get_thumb($attach_id, $width, $height, $crop = false) {
 		$image_src[0] = $attach_id;
 		$image_src[1] = $imagesize[0];
 		$image_src[2] = $imagesize[1];
-		$file_path = $_SERVER["DOCUMENT_ROOT"].str_replace(get_bloginfo('siteurl'), '', $attach_id);
+		$file_path = $_SERVER["DOCUMENT_ROOT"].str_replace(array(get_bloginfo('url'), 'http://wordpress.corillamarine.com'), '/wordpress', $attach_id);
 		
 	}
 	
@@ -197,6 +215,7 @@ function get_thumb($attach_id, $width, $height, $crop = false) {
 
 		// resize image if no such resized file
 		$new_img_path = image_resize($file_path, $width, $height, $crop);
+
 		$new_img_size = getimagesize($new_img_path);
 		return str_replace(basename($image_src[0]), basename($new_img_path), $image_src[0]);
 	}
@@ -236,3 +255,53 @@ function my_login_redirect( $redirect_to, $request, $user ){
     }
 }
 add_filter("login_redirect", "my_login_redirect", 10, 3);
+
+
+add_image_size('gallery-image', 193, 160, true);
+/**
+ * Get all images from post
+ * @param  integer $id  --- post id;
+ * @param  string $size --- image size;
+ * @return mixed  	    --- if post have images will return images | if not. Return NULL
+ */
+function getAllImagesFromPost($id, $size = 'gallery-image')
+{
+	$images   = null;
+	$thumb_id = -666;
+	$args     = array(
+	  'post_type'   => 'attachment',
+	  'numberposts' => -1,
+	  'post_status' => null,
+	  'post_parent' => $id
+	);
+
+	if(has_post_thumbnail($id)) $thumb_id = get_post_thumbnail_id($id);
+
+	$attachments = get_posts( $args );
+	if ( $attachments )
+	{
+		foreach ( $attachments as $attachment )
+		{
+			if($attachment->ID != $thumb_id)
+			{
+				$tmp      = wp_get_attachment_image_src($attachment->ID, $size);
+				$tmp_full = wp_get_attachment_image_src($attachment->ID, 'full');
+
+				if($tmp[0])
+				{
+					$images[] = array('small' => $tmp[0], 'full' => $tmp_full[0]);
+				}  	
+			}
+		}
+	}
+	return $images;
+}
+
+// =========================================================
+// Custom post types
+// =========================================================
+$gmap_args       = array('supports' => array("title", "editor"));
+$GLOBALS['gmap'] = new PostTypeFactory('gmap', $gmap_args);
+$GLOBALS['gmap']->addMetaBox('Coordinates', array(
+	'latitude'  => 'text',
+	'longitude' => 'text'));

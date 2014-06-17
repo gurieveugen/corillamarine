@@ -13,27 +13,36 @@
 		<div class="slide" style="background-image:url(<?php echo TDU; ?>/images/img.jpg);">
 			<div class="holder">
 				<div class="box">
-					<h1>Corilla Plastics is a rotational moulding company with more than 40 years experience.</h1>
-					<p class="pc-visible">From our home in South Wales, we create high quality mouldings for our customers around the world.</p>
-					<a href="#" class="link-video mobile-hide"><span><img src="<?php echo TDU; ?>/images/ico-video.png" alt=""></span><span>Watch our latest video to see why you can trust Corilla Plastics</span></a>
+					<h1>Corilla Marine design and manufacture navigation and mooring buoys for clients across the globe.</h1>
+					<!--<p class="pc-visible">From our home in South Wales, we create high quality mouldings for our customers around the world.</p>
+					<a href="#" class="link-video mobile-hide"><span><img src="<?php echo TDU; ?>/images/ico-video.png" alt=""></span><span>Watch our latest video to see why you can trust Corilla Plastics</span></a>*/-->
 				</div>
 			</div>
 		</div>
-		<div class="slide" style="background-image:url(<?php echo TDU; ?>/images/img.jpg);">
+		<div class="slide" style="background-image:url(<?php echo TDU; ?>/images/home2.jpg);">
 			<div class="holder">
 				<div class="box">
-					<h1>Corilla Plastics is a rotational moulding company with more than 40 years experience.2</h1>
-					<p class="pc-visible">From our home in South Wales, we create high quality mouldings for our customers around the world.</p>
-					<a href="#" class="link-video mobile-hide"><span><img src="<?php echo TDU; ?>/images/ico-video.png" alt=""></span><span>Watch our latest video to see why you can trust Corilla Plastics</span></a>
+					<h1>Corilla Marine design and manufacture navigation and mooring buoys for clients across the globe.</h1>
+					<!--<p class="pc-visible">From our home in South Wales, we create high quality mouldings for our customers around the world.</p>
+					<a href="#" class="link-video mobile-hide"><span><img src="<?php echo TDU; ?>/images/ico-video.png" alt=""></span><span>Watch our latest video to see why you can trust Corilla Plastics</span></a>*/-->
 				</div>
 			</div>
 		</div>
-		<div class="slide" style="background-image:url(<?php echo TDU; ?>/images/img.jpg);">
+		<div class="slide" style="background-image:url(<?php echo TDU; ?>/images/home3.jpg);">
 			<div class="holder">
 				<div class="box">
-					<h1>Corilla Plastics is a rotational moulding company with more than 40 years experience.2</h1>
-					<p class="pc-visible">From our home in South Wales, we create high quality mouldings for our customers around the world.</p>
-					<a href="#" class="link-video mobile-hide"><span><img src="<?php echo TDU; ?>/images/ico-video.png" alt=""></span><span>Watch our latest video to see why you can trust Corilla Plastics</span></a>
+					<h1>Corilla Marine design and manufacture navigation and mooring buoys for clients across the globe.</h1>
+					<!--<p class="pc-visible">From our home in South Wales, we create high quality mouldings for our customers around the world.</p>
+					<a href="#" class="link-video mobile-hide"><span><img src="<?php echo TDU; ?>/images/ico-video.png" alt=""></span><span>Watch our latest video to see why you can trust Corilla Plastics</span></a>*/-->
+				</div>
+			</div>
+		</div>
+        <div class="slide" style="background-image:url(<?php echo TDU; ?>/images/home4.jpg);">
+			<div class="holder">
+				<div class="box">
+					<h1>Corilla Marine design and manufacture navigation and mooring buoys for clients across the globe.</h1>
+					<!--<p class="pc-visible">From our home in South Wales, we create high quality mouldings for our customers around the world.</p>
+					<a href="#" class="link-video mobile-hide"><span><img src="<?php echo TDU; ?>/images/ico-video.png" alt=""></span><span>Watch our latest video to see why you can trust Corilla Plastics</span></a>*/-->
 				</div>
 			</div>
 		</div>

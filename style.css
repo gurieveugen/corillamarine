@@ -543,7 +543,7 @@ input, textarea, select {
 }
 #header nav {
 	clear:both;
-	padding:28px 0 0;
+	padding:5px 0 0;
 }
 #nav {
 	float:right;
@@ -630,7 +630,7 @@ input, textarea, select {
 	background-size:cover;
 }
 .home-slider .slide .holder{
-	padding:0 0 0 15%;
+	padding:0 0 0 5%;
 	display: table-cell;
 	vertical-align: middle;
 }
@@ -642,12 +642,12 @@ input, textarea, select {
 	font:20px/24px 'Raleway Medium', Arial, Helvetica, sans-serif;
 	background:url(images/bg-transparent.png);
 	padding:37px 33px 47px;
-	width:59%;
+	width:40%;
 	position:relative;
 	z-index:2;
 }
 .home-slider .box h1{
-	font:46px/55px 'Raleway Medium', Arial, Helvetica, sans-serif;
+	font:30px/40px 'Raleway Medium', Arial, Helvetica, sans-serif;
 	margin:0 0 24px;
 }
 .home-slider .box p{
@@ -1202,7 +1202,7 @@ span.wpcf7-form-control-wrap {
 	display: block;
 	height: 100%;
 	width: 100%;
-	background: url(images/img-15.jpg) no-repeat 50% 50%;
+	/*background: url(images/img-15.jpg) no-repeat 50% 50%;*/
 }
 .map-area .box{
 	width: 460px;
@@ -1310,3 +1310,12 @@ span.wpcf7-form-control-wrap {
 	display:table;
 	clear:both;
 }
+.hide{ display: none; }
+#map-canvas{ 
+	height: 100%;
+    margin: 0px;
+    padding: 0px
+
+}
+
+#map-canvas img{max-width: inherit;}

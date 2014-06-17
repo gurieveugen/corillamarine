@@ -68,9 +68,6 @@
 				$content = str_replace(']]>', ']]&gt;', $content);
 			$photo_item .= $content;
 			}
-			if(!empty($person['email'])){	
-			$photo_item .= '<p><strong><a href="mailto:'.$person['email'].'">'.$person['email'].'</a></strong></p>';
-			}		
 			$photo_item .= '</div>
 						</div>
 					</div>';

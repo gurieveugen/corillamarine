@@ -70,9 +70,9 @@
 			<div class="center-wrap">
 				<div class="contacts-area cf">
 					<strong class="m-left"><a href="tel:+44 (0) 1656 870415">+44 (0) 1656 870415</a></strong>
-					<strong><a href="mailto:" class="link-email">Email us</a></strong>
+					<strong><a href="/contact/" class="link-email">Email us</a></strong>
 				</div>
-				<a href="<?php echo home_url('/'); ?>" class="logo" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><img src="<?php echo TDU; ?>/images/logo-marine.png" alt="<?php bloginfo('name'); ?>"></a>
+				<a href="<?php echo home_url('/'); ?>" class="logo" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><img src="<?php echo TDU; ?>/images/marine-logo.png" alt="<?php bloginfo('name'); ?>"></a>
 				<a href="#" class="mobile-visible btn-m-nav">open/close navigation</a>
 				<!--<nav class="cf">
 					<ul id="nav">

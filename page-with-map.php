@@ -25,8 +25,46 @@
 			<h1><?php the_title(); ?></h1>
 			<?php the_content(); ?>
 			<div class="map-area">
-				<div class="image-map"></div>
-				<div class="box">
+				<div id="map-canvas" class="image-map"></div>
+				<?php
+				$items = $GLOBALS['gmap']->getItems();				
+				if($items)
+				{
+					foreach ($items as $p) 
+					{
+						?>
+						<div id="box-<?php echo $p->ID; ?>" class="box hide">
+							<div class="holder">
+								<h3><?php echo $p->post_title; ?></h3>
+								<?php echo $p->post_content; ?>
+								<?php 
+								$images = getAllImagesFromPost($p->ID); 
+								if($images)
+								{
+									?>
+									<div class="gallery-map">
+										<ul class="slides">
+											<?php 
+											foreach ($images as $img) 
+											{
+												?>
+												<li><img src="<?php echo $img['small']; ?>" alt=""></li>
+												<?php
+											}
+											?>
+										</ul>
+									</div>
+									<?php
+								}
+								?>								
+								<a href="#" class="close"></a>
+							</div>
+						</div>
+						<?php
+					}
+				}
+				?>
+				<div class="box hide">
 					<div class="holder">
 						<h3>MacAlister Elliot &amp; Co Ltd <br>Tunafish buoys</h3>
 						<p>Location: Indian Ocean</p>
@@ -48,7 +86,7 @@
 						<a href="#" class="close"></a>
 					</div>
 				</div>
-				<div class="mask"></div>
+				<div class="mask hide"></div>
 			</div>
 			<script>
 				jQuery(function(){
