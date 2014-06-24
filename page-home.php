@@ -8,86 +8,99 @@
 
 	<?php if (have_posts()) : the_post(); ?>
 
+<?php
+	$big_slides = get_field("big_slide");
+	if(!empty($big_slides)){
+	
+		$slideshow_speed = get_field('slideshow_speed');
+		
+	?>
 <section class="home-slider">
 	<div class="slides cf">
-		<div class="slide" style="background-image:url(<?php echo TDU; ?>/images/img.jpg);">
+	<?php foreach($big_slides as $big_slide){?>
+		<div class="slide" style="background-image:url(<?php echo $big_slide['big_image']['url']; ?>);">
 			<div class="holder">
-				<div class="box">
-					<h1>Corilla Marine design and manufacture navigation and mooring buoys for clients across the globe.</h1>
-					<!--<p class="pc-visible">From our home in South Wales, we create high quality mouldings for our customers around the world.</p>
-					<a href="#" class="link-video mobile-hide"><span><img src="<?php echo TDU; ?>/images/ico-video.png" alt=""></span><span>Watch our latest video to see why you can trust Corilla Plastics</span></a>*/-->
+				<div class="box"> 
+					<?php if(!empty($big_slide['title'])){ ?><h1><?php echo $big_slide['title']; ?></h1><?php }?>
+					<?php if(!empty($big_slide['text'])){ ?><p class="pc-visible"><?php echo $big_slide['text']; ?></p><?php } ?>
+					<?php if(!empty($big_slide['link_url'])){ ?><a href="<?php echo $big_slide['link_url']; ?>" class="link-video mobile-hide"><?php } ?>
+					<?php if(!empty($big_slide['link_icon']['url'])){ ?><span><img src="<?php echo $big_slide['link_icon']['url']; ?>" alt=""></span><?php } ?>
+					<?php if(!empty($big_slide['link_text'])){ ?><span><?php echo $big_slide['link_text']; ?></span><?php } ?>
+					<?php if(!empty($big_slide['link_url'])){ ?></a><?php } ?>
 				</div>
 			</div>
 		</div>
-		<div class="slide" style="background-image:url(<?php echo TDU; ?>/images/home2.jpg);">
-			<div class="holder">
-				<div class="box">
-					<h1>Corilla Marine design and manufacture navigation and mooring buoys for clients across the globe.</h1>
-					<!--<p class="pc-visible">From our home in South Wales, we create high quality mouldings for our customers around the world.</p>
-					<a href="#" class="link-video mobile-hide"><span><img src="<?php echo TDU; ?>/images/ico-video.png" alt=""></span><span>Watch our latest video to see why you can trust Corilla Plastics</span></a>*/-->
-				</div>
-			</div>
-		</div>
-		<div class="slide" style="background-image:url(<?php echo TDU; ?>/images/home3.jpg);">
-			<div class="holder">
-				<div class="box">
-					<h1>Corilla Marine design and manufacture navigation and mooring buoys for clients across the globe.</h1>
-					<!--<p class="pc-visible">From our home in South Wales, we create high quality mouldings for our customers around the world.</p>
-					<a href="#" class="link-video mobile-hide"><span><img src="<?php echo TDU; ?>/images/ico-video.png" alt=""></span><span>Watch our latest video to see why you can trust Corilla Plastics</span></a>*/-->
-				</div>
-			</div>
-		</div>
-        <div class="slide" style="background-image:url(<?php echo TDU; ?>/images/home4.jpg);">
-			<div class="holder">
-				<div class="box">
-					<h1>Corilla Marine design and manufacture navigation and mooring buoys for clients across the globe.</h1>
-					<!--<p class="pc-visible">From our home in South Wales, we create high quality mouldings for our customers around the world.</p>
-					<a href="#" class="link-video mobile-hide"><span><img src="<?php echo TDU; ?>/images/ico-video.png" alt=""></span><span>Watch our latest video to see why you can trust Corilla Plastics</span></a>*/-->
-				</div>
-			</div>
-		</div>
+	<?php } ?>	
 	</div>
 </section>
-<script type="text/javascript">
-(function(){
-	$(function(){
+	<script type="text/javascript">
+	(function(){
+		$(function(){
+			
+			var $window = $(window), flexslider;
 	
-		var $window = $(window), flexslider;
-		setTimeout(function(){ $('.widgets-slider .holder').equalHeightColumns(); }, 300);
-		
-		$('.home-slider').flexslider({
-			animation: "fade",
-			selector: ".slides > div",
-			slideshowSpeed: 4000,
-			animationSpeed: 600,
-			controlNav: false,
-			directionNav: false,
-			touch: false,
-			smoothHeight: false
+			setTimeout(function(){ $('.widgets-slider .holder').equalHeightColumns(); }, 300);
+			
+			var slideshow_speed = <?php echo $slideshow_speed;?>;
+			$('.home-slider').flexslider({
+				animation: "fade",
+				selector: ".slides > div",
+				slideshowSpeed: <?php the_field('slideshow_speed'); ?>,
+				animationSpeed: <?php the_field('animation_speed'); ?>,
+				controlNav: false,
+				directionNav: false,
+				touch: false,
+				smoothHeight: false,
+				/*
+				start: function(){
+					jQuery(".flex-active-slide .box").animate({left: "0px"}, slideshow_speed/4);
+				},
+				after: function(){
+					//jQuery(".flex-active-slide .box").show("slow");
+					jQuery(".flex-active-slide .box").animate({left: "0px"}, slideshow_speed/4, function(){ 
+									setTimeout(function() {
+									//	jQuery(".flex-active-slide .box").animate({left: "2000px"}, slideshow_speed/5);
+									jQuery(".flex-active-slide .box").fadeOut(slideshow_speed/5);
+									}, slideshow_speed/2);
+					});
+				},
+				before: function(){				
+					jQuery(".slide .box").css("left", "-800px").fadeIn();
+				} */
+			});
+			
+			$('.widgets-slider').flexslider({
+				animation: "slide",
+				selector: ".slides > aside",
+				animationLoop: false,
+				slideshowSpeed: 10000,
+				animationSpeed: 600,
+				controlNav: false,
+				touch: false,
+				smoothHeight: true,
+				itemWidth: 1,
+				itemMargin: 50,
+				minItems: getGridSize(),
+				maxItems: getGridSize()
+			});
+			
+			function getGridSize(){
+				return (window.innerWidth < 500) ? 1 : 
+				(window.innerWidth < 960) ? 2 : 3;
+			}
+			
+			/*$window.resize(function() {
+				var gridSize = getGridSize();
+				//flexslider.vars.itemWidth = gridSize;
+				flexslider.vars.minItems = gridSize;
+				flexslider.vars.maxItems = gridSize;
+			});*/
+			
 		});
 		
-		$('.widgets-slider').flexslider({
-			animation: "slide",
-			selector: ".slides > aside",
-			animationLoop: false,
-			slideshowSpeed: 10000,
-			animationSpeed: 600,
-			controlNav: false,
-			touch: false,
-			smoothHeight: true,
-			itemWidth: 1,
-			itemMargin: 50,
-			minItems: getGridSize(),
-			maxItems: getGridSize()
-		});
-		
-		function getGridSize(){
-			return (window.innerWidth < 500) ? 1 : 
-			(window.innerWidth < 960) ? 2 : 3;
-		}
-	});
-})(jQuery);
-</script>
+	})(jQuery);
+	</script>
+	<?php } ?>
 <div class="home-area center-wrap-790">
 	<?php
 	$link_under_slider_url = get_field('link-under-slider-url');
