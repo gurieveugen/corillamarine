@@ -41,13 +41,6 @@
 					</span>
 				</div>
 		
-				<?php if(has_post_thumbnail()){	
-						$post_thumbnail_id = get_post_thumbnail_id();		
-						$post_thumbnail_src = wp_get_attachment_image_src($post_thumbnail_id, 'full');
-						echo '<div class="full-image"><img src="'.$post_thumbnail_src[0].'"></div>';
-				}
-				?>
-		
 				<div class="entry-content">
 					<?php the_content(); ?>
 					<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'theme' ) . '</span>', 'after' => '</div>' ) ); ?>

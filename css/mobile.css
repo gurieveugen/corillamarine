@@ -10,7 +10,7 @@
 	display: block !important;
 }
 .video-link.mobile-visible{
-	display: table !important;
+	display: none !important;
 }
 .m-left{
 	float: left;
